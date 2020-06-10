@@ -23,7 +23,50 @@ class QuestionController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $rules =[
+            'title' =>'required|min:3|max:100',
+            'quiz_id' =>'required|integer',
+            'answers' =>'required|min:5|max:1000',
+            'right_answer' =>'required|min:3|max:50',
+            'score' =>'required|integer',
+        ];
+
+        $this->validate($request, $rules);
+        if(Question::create($request->all())){
+            return redirect('/admin/Questions')->withStatus('Question successfully created');
+        }
+    }
+
+    public function edit($id)
+    {
+        $question = Question::find($id);
+        return view('admin.questions.edit',compact('question' ,'id'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $rules =[
+            'title' =>'required|min:3|max:100',
+            'answers' =>'required|min:5|max:1000',
+            'right_answer' =>'required|min:3|max:50',
+            'quiz_id' =>'required|integer',
+            'score' =>'required|integer',
+        ];
+        $this->validate($request, $rules);
+
+        $question = Question::find($id);
+            $question->title =$request->title;
+            $question->quiz_id =$request->quiz_id;
+            $question->answers =$request->answers;
+            $question->right_answer =$request->right_answer;
+            $question->score =$request->score;
+        if($question->isDirty()){
+            $question->save();
+            return redirect('/admin/Questions')->withStatus('Questions successfully updated');
+        }else{
+            return redirect('/admin/Questions/'.$question->id.'/edit')->withStatus('nothing updated');
+        }
+
     }
 
     public function show($id)
@@ -31,21 +74,11 @@ class QuestionController extends Controller
         //
     }
 
-    public function edit($id)
+
+    public function destroy($id)
     {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy(Question $question)
-    {
+        $question = Question::find($id);
         $question->delete();
-        return redirect('/admin/Quizzes/show')->withStatus('quiz successfully deleted');
+        return redirect('/admin/Questions')->withStatus('question successfully deleted');
     }
 }

@@ -408,11 +408,11 @@
 
                             @foreach ($questions as $question)
                             <tr>
-                                <td title="{{$question->title}}">{{$question->title}}</td>
+                                <td title="{{$question->title}}"><a href="/admin/Questions/show">{{$question->title}}</a></td>
                                 <td title="{{$question->answers}}">{{\Str::limit($question->answers,20)}}</td>
                                 <td>{{$question->right_answer}}</td>
                                 <td>{{$question->score}}</td>
-                                <td>{{$question->quiz->name}}</td>
+                            <td><a href="/admin/Quizzes/{{$question->quiz->id}}">{{$question->quiz->name}}</a></td>
                                 <td>{{$question->created_at->diffforHumans()}}</td>
                                 <td class="text-right">
                                         <div class="dropdown">

@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
     //trackscourse
     Route::resource('admin/tracks.courses', 'Admin\TrackCourseController');
     //Question
-    Route::resource('admin/Questions', 'Admin\QuestionController');
+    Route::resource('admin/Questions', 'Admin\QuestionController',['except' => ['show']]);
     //quizzes
     Route::resource('admin/Quizzes', 'Admin\QuizController');
     //quizzesquestions
