@@ -11,7 +11,8 @@ class QuizController extends Controller
     public function index()
     {
         $quizzes = Quiz::orderBy('id','desc')->paginate(20);
-        return view('admin.quizzes.index',compact('quizzes'));    }
+        return view('admin.quizzes.index',compact('quizzes'));
+    }
 
 
     public function create()

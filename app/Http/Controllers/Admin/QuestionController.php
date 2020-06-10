@@ -4,19 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Question;
 
 class QuestionController extends Controller
 {
 
     public function index()
     {
-        //
+        $questions = Question::orderBy('id','desc')->paginate(30);
+        return view('admin.questions.index',compact('questions'));
     }
 
 
     public function create()
     {
-        //
+        return view('admin.questions.create');
     }
 
     public function store(Request $request)

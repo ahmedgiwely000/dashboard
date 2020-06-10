@@ -45,14 +45,14 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::resource('admin/tracks', 'Admin\TrackController');
     //trackscourse
     Route::resource('admin/tracks.courses', 'Admin\TrackCourseController');
+    //Question
+    Route::resource('admin/Questions', 'Admin\QuestionController');
     //quizzes
     Route::resource('admin/Quizzes', 'Admin\QuizController');
     //quizzesquestions
     Route::resource('admin/Quizzes.questions', 'Admin\QuizQuestionController');
     //coursequizzes
     Route::resource('admin/courses.quizzes', 'Admin\CourseQuizController');
-    //questions
-    Route::resource('admin/Questions', 'Admin\QuestionController');
 
     Route::get('admin/profile', ['as' => 'profile.edit', 'uses' => 'Admin\ProfileController@edit']);
 

@@ -2,7 +2,7 @@
 
 @section('content')
     @include('admin.users.partials.header', [
-        'title' => __('Edit quiz') . ' '. auth()->user()->name,
+        'title' => __('Creat quiz') . ' '. auth()->user()->name,
     ])
 
     <div class="container-fluid mt--7">
