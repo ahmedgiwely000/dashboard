@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <h1 class="text-danger font-italic font-weight-bold">learning code</h1>
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -110,7 +110,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link active" href="#users" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fa fa-user-alt" style="color: #1865da;"></i>
+                        <i class="fa fa-user-alt-slash" style="color: #da3f18;"></i>
                         <span class="nav-link-text" style="color: #da3f18;">{{ __('Users') }}</span>
                     </a>
 
@@ -132,22 +132,22 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/tracks">
-                        <i class="ni ni-planet text-blue"></i> {{ __('tracks') }}
+                        <i class="fa fa-chart-bar text-blue"></i> {{ __('tracks') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/courses">
-                        <i class="ni ni-planet text-blue"></i> {{ __('Courses') }}
+                        <i class="fa fa-chalkboard-teacher text-blue"></i> {{ __('Courses') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/videos">
-                        <i class="fa fa-video text-orange"></i> {{ __('Videos') }}
+                        <i class="fa fa-video text-blue"></i> {{ __('Videos') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/Quizzes">
-                        <i class="fa fa-pen-alt text-orange"></i> {{ __('Quizzes') }}
+                        <i class="fa fa-pen-alt text-blue"></i> {{ __('Quizzes') }}
                     </a>
                 </li>
                 <li class="nav-item">

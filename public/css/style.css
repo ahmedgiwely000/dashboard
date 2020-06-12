@@ -1,0 +1,57 @@
+/* NavBar */
+.color_navbar{
+    background-color: #1c5994;
+    border-bottom: rgba(23, 142, 189, 0.533) solid 2px !important;
+}
+.input-search{
+    width: 400px!important;
+}
+.navbar-brand{
+    font-size: 1.5rem!important;
+    margin-left: 20px;
+    color: steelblue!important;
+    text-shadow:  2px 2px 1px white;
+}
+.span_logo{
+    font-weight: bold;
+    background-color: white;
+    color: steelblue;
+    padding: 10px;
+    border-radius: 20px 10px ;
+    margin-right: 10px;
+    text-shadow:  1px 4px 4px #1c5994;
+}
+/* home picture */
+.home_picture{
+    height: 350px;
+    background-image:linear-gradient(rgba(78, 173, 228, 0.2),rgba(0, 0, 0, .2)), url('../images/cover1.jpeg');
+    background-position: bottom;
+    background-size: cover;
+    background-origin: content-box;
+    background-attachment: fixed;
+}
+
+.background-text{
+    padding-top: 40px;
+    padding-left: 50px;
+    text-shadow:  1px 1px 4px #1c5994;
+}
+.background-text strong{
+    color: #0e457c;
+}
+.background-text p:nth-child(1){
+    font-style: italic;
+    font-size: 3rem;
+    margin-bottom: 0;
+}
+.background-text p:nth-child(2){
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.btn-primary{
+    background-color: #1c5994!important;
+    border-color: #1c5994;
+}
+
+

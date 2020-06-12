@@ -2,280 +2,235 @@
 
 @section('content')
     @include('layouts.headers.cards')
-    
+
     <div class="container-fluid mt--7">
         <div class="row">
-            <div class="col-xl-8 mb-5 mb-xl-0">
-                <div class="card bg-gradient-default shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-                                <h2 class="text-white mb-0">Sales value</h2>
-                            </div>
-                            <div class="col">
-                                <ul class="nav nav-pills justify-content-end">
-                                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                                        <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                                            <span class="d-none d-md-block">Month</span>
-                                            <span class="d-md-none">M</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                                        <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                                            <span class="d-none d-md-block">Week</span>
-                                            <span class="d-md-none">W</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <!-- Chart -->
-                        <div class="chart">
-                            <!-- Chart wrapper -->
-                            <canvas id="chart-sales" class="chart-canvas"></canvas>
-                        </div>
-                    </div>
+            <div class="col-xl-5 mb-5 mb-xl-0">
+                <h2 class="text-white">Last Tracks</h2>
+                @if (count($tracks))
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush bg-danger">
+
+                        <thead class="text-dark font-italic font-weight-bold">
+                            <tr>
+                                <th scope="col">Track Name</th>
+                                <th scope="col">No Courses</th>
+                                <th scope="col">Creation Date</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody  class="text-white">
+
+                            @foreach ($tracks as $track)
+                            <tr>
+                            <td title="{{$track->name}}"><a href="/admin/tracks/{{$track->id}}">{{\Str::limit($track->name,10)}}</a></td>
+                                <td>{{count($track->courses)}} Course</td>
+                                <td>{{$track->created_at->format('d/m/y H:i')}}</td>
+                                <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+
+                                        <form action="{{route('tracks.destroy', $track)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                        <a class="dropdown-item" href="{{route('tracks.edit' ,$track)}}">{{__("Edit")}}</a>
+                                        <button type="button" class="dropdown-item"
+                                         onclick="confirm('{{__('Are you sure you want to delete this user?')}}') ?
+                                          this.parentElement.submit() : ''">{{__("Delete")}}</button>
+                                        </form>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
+                @else
+                <div class="text-uppercase text-danger font-weight-bold text-center">no tracks found</div>
+                @endif
             </div>
-            <div class="col-xl-4">
-                <div class="card shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                                <h2 class="mb-0">Total orders</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <!-- Chart -->
-                        <div class="chart">
-                            <canvas id="chart-orders" class="chart-canvas"></canvas>
-                        </div>
-                    </div>
+            <div class="col-xl-7">
+                <h2 class="text-white">Last Courses</h2>
+                @if (count($courses))
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush bg-dark">
+
+                        <thead class="text-white font-italic font-weight-bold">
+                            <tr>
+                                <th scope="col">course title</th>
+                                <th scope="col">id</th>
+                                <th scope="col">tracks</th>
+                                <th scope="col">users</th>
+                                <th scope="col">Creation Date</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody  class="text-white">
+
+                            @foreach ($courses as $course)
+                            <tr>
+                            <td title="{{$course->title}}"><a href="/admin/tracks/{{$course->id}}">{{\Str::limit($course->title,20)}}</a></td>
+                                <td>{{$course->id}}</td>
+                                <td>{{$course->track->name}}</td>
+                                <td>{{count($course->users)}}</td>
+                                <td>{{$course->created_at->format('d/m/y H:i')}}</td>
+                                <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+
+                                        <form action="{{route('courses.destroy', $course)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                        <a class="dropdown-item" href="{{route('courses.edit' ,$course)}}">{{__("Edit")}}</a>
+                                        <button type="button" class="dropdown-item"
+                                         onclick="confirm('{{__('Are you sure you want to delete this user?')}}') ?
+                                          this.parentElement.submit() : ''">{{__("Delete")}}</button>
+                                        </form>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
+                @else
+                <div class="text-uppercase text-danger font-weight-bold text-center">no courses found</div>
+                @endif
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-xl-8 mb-5 mb-xl-0">
-                <div class="card shadow">
-                    <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Page visits</h3>
-                            </div>
-                            <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Page name</th>
-                                    <th scope="col">Visitors</th>
-                                    <th scope="col">Unique users</th>
-                                    <th scope="col">Bounce rate</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/
-                                    </th>
-                                    <td>
-                                        4,569
-                                    </td>
-                                    <td>
-                                        340
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/index.html
-                                    </th>
-                                    <td>
-                                        3,985
-                                    </td>
-                                    <td>
-                                        319
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/charts.html
-                                    </th>
-                                    <td>
-                                        3,513
-                                    </td>
-                                    <td>
-                                        294
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/tables.html
-                                    </th>
-                                    <td>
-                                        2,050
-                                    </td>
-                                    <td>
-                                        147
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        /argon/profile.html
-                                    </th>
-                                    <td>
-                                        1,795
-                                    </td>
-                                    <td>
-                                        190
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="col-xl-5 mb-5 mb-xl-0">
+                <h2 class="text-dark">Last users</h2>
+                @if (count($users))
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush bg-dark">
+
+                        <thead class="text-white font-italic font-weight-bold">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Verified</th>
+                                <th scope="col"></th>
+                        </thead>
+
+                        <tbody  class="text-white">
+
+                            @foreach ($users as $user)
+                            <tr>
+                                <td title="{{$user->name}}">{{\Str::limit($user->name,15)}}</td>
+                                <td>
+                                <a title="{{$user->email}}" href="mailto:admin@argon.com">{{\Str::limit($user->email,10)}}</a>
+                                </td>
+                                <td class="<?php if($user->email_verified_at) echo 'text-success'; else echo 'text-danger';?>">
+                                        <?php
+                                        if($user->email_verified_at){
+                                            echo 'verified';
+                                        }else{
+                                            echo 'Unverified';
+                                        }
+                                        ?>
+                                </td>
+                                <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+
+                                        @if ($user->id != auth()->id())
+
+                                        <form action="{{route('users.destroy', $user)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                        <a class="dropdown-item" href="{{route('users.edit' ,$user)}}">{{__("Edit")}}</a>
+                                        <button type="button" class="dropdown-item"
+                                         onclick="confirm('{{__('Are you sure you want to delete this user?')}}') ?
+                                          this.parentElement.submit() : ''">{{__("Delete")}}</button>
+                                        </form>
+
+                                        @else
+                                            <a class="dropdown-item" href="{{route('users.edit' ,$user)}}">{{__("Edit")}}</a>
+                                        @endif
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
+                @else
+                <div class="text-uppercase text-danger font-weight-bold text-center">no courses found</div>
+                @endif
             </div>
-            <div class="col-xl-4">
-                <div class="card shadow">
-                    <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Social traffic</h3>
-                            </div>
-                            <div class="col text-right">
-                                <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Referral</th>
-                                    <th scope="col">Visitors</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        Facebook
-                                    </th>
-                                    <td>
-                                        1,480
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">60%</span>
-                                            <div>
-                                                <div class="progress">
-                                                <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                                                </div>
-                                            </div>
+            <div class="col-xl-7">
+                <h2 class="text-dark">Last Quizzes</h2>
+                @if (count($quizzes))
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush bg-danger">
+
+                        <thead class="text-dark font-italic font-weight-bold">
+                            <tr>
+                                <th scope="col">Quiz Name</th>
+                                <th scope="col">Quiz Id</th>
+                                <th scope="col">Course Name</th>
+                                <th scope="col">Num Questions</th>
+                                <th scope="col">Creation Date</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody  class="text-white">
+
+                            @foreach ($quizzes as $quiz)
+                            <tr>
+                                <td title="{{$quiz->name}}"><a href="{{route('Quizzes.show',$quiz)}}">{{\Str::limit($quiz->name,10)}}</a></td>
+                                <td>{{$quiz->id}}</td>
+                                <td>
+                                    <a href="courses/{{$quiz->course->id}}">{{\Str::limit($quiz->course->title,10)}}</a>
+                                </td>
+                                <td>{{count($quiz->questions)}}</td>
+                                <td>{{$quiz->created_at->diffforHumans()}}</td>
+                                <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+
+                                        <form action="{{route('Quizzes.destroy', $quiz)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                        <a class="dropdown-item" href="{{route('Quizzes.edit' ,$quiz)}}">{{__("Edit")}}</a>
+                                        <button type="button" class="dropdown-item"
+                                         onclick="confirm('{{__('Are you sure you want to delete this user?')}}') ?
+                                          this.parentElement.submit() : ''">{{__("Delete")}}</button>
+                                        </form>
+
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        Facebook
-                                    </th>
-                                    <td>
-                                        5,480
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">70%</span>
-                                            <div>
-                                                <div class="progress">
-                                                <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        Google
-                                    </th>
-                                    <td>
-                                        4,807
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">80%</span>
-                                            <div>
-                                                <div class="progress">
-                                                <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        Instagram
-                                    </th>
-                                    <td>
-                                        3,678
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">75%</span>
-                                            <div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        twitter
-                                    </th>
-                                    <td>
-                                        2,645
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <span class="mr-2">30%</span>
-                                            <div>
-                                                <div class="progress">
-                                                <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
+                @else
+                <div class="text-uppercase text-danger font-weight-bold text-center">no quizzes found</div>
+                @endif
             </div>
         </div>
 

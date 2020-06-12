@@ -71,10 +71,10 @@
 
                                 @foreach ($course->videos as $video)
                                 <tr>
-                                    <td title="{{$video->title}}"><a href="videos/{{$video->id}}">{{\Str::limit($video->title, 20)}}</a></td>
+                                <td title="{{$video->title}}"><a href="{{route('videos.show',$video)}}">{{\Str::limit($video->title, 20)}}</a></td>
                                     <td>{{$video->id}}</td>
                                     <td>
-                                       <a href="admin/courses/{{$video->course->id}}">{{$video->course->title}}</a>
+                                       <a>{{$video->course->title}}</a>
                                     </td>
                                     <td title="{{$video->link}}">{{\Str::limit($video->link,30)}}</td>
 
