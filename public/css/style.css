@@ -133,3 +133,38 @@ figure img:hover{
     background: #0f5066;
     color: white;
 }
+/**************** track-course **************/
+.track-title{
+    background: #1c5994;
+}
+.track-course img{
+    width: 100%;
+}
+.track-head{
+    font-weight: bold;
+    color: rgb(226, 233, 238);
+    padding: 3px;
+    border-radius:20px 10px 20px 10px ;
+    margin-right: 10px;
+    box-shadow: 2px 4px 4px #f0f4f8;
+}
+.course-head{
+    font-weight: bold;
+    color: rgb(12, 91, 148);
+    padding: 3px;
+    border-radius:20px 10px 20px 10px ;
+    margin-right: 10px;
+    box-shadow: 2px 4px 4px #f0f4f8;
+}
+
+.track-name{
+    color: #031629;
+}
+
+.course .card img{
+    width: 347px;
+    height: 231px;
+}
+.course .card-title a{
+    text-decoration: none;
+}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Track;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +15,8 @@ class HomeController extends Controller
     public function index()
     {
         $user_courses = User::findOrFail(10)->courses;
-        return view('home',compact('user_courses'));
+        $tracks = Track::with('courses')->orderBy('id','desc')->get();
+        return view('home',compact('user_courses','tracks'));
     }
 
     public function create()
