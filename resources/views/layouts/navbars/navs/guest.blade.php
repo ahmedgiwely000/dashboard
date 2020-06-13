@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <h1 class="text-danger font-italic font-weight-bold">learning code</h1>
+                            <h1 class="text-success font-italic font-weight-bold">learning code</h1>
                         </a>
                     </div>
                     <div class="col-6 collapse-close">

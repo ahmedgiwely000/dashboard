@@ -47,7 +47,7 @@
                             <a class="dropdown-item" href="admin/profile">Profile</a>
                             <a class="dropdown-item" href="">My Course</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                            <a href="{{ route('logout') }}" class="dropdown-item">Logout</a>
                           </div>
                         @endauth
                       </li>
@@ -55,7 +55,7 @@
                 </div>
               </nav>
         </div><!-- Container-fluid -->
-        @yield('home_picture')
+        @yield('content')
 
         <script src="/js/script.js"></script>
     </body>

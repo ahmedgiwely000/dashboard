@@ -1,6 +1,7 @@
 @extends('layouts.user')
 
-@section('home_picture')
+@section('content')
 @include('includes.home_picture')
+@include('includes.mycourses')
 @endsection
 

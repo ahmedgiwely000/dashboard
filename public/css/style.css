@@ -36,7 +36,10 @@
     padding-left: 50px;
     text-shadow:  1px 1px 4px #1c5994;
 }
-.background-text strong{
+.text-color{
+    color: #df8927;
+}
+.background-text strong , .course_text strong{
     color: #0e457c;
 }
 .background-text p:nth-child(1){
@@ -53,5 +56,80 @@
     background-color: #1c5994!important;
     border-color: #1c5994;
 }
+/*************** carousel *************/
 
+.carousel {
+    background-color: #031629;
+}
+.text-decoration h2 a{
+    text-decoration: none;
+}
+.course-card{
+    padding-left: 300px;
+    margin-top: 10px;
+}
+.course_text {
+    margin-left: -20px;
+    margin-right: 350px;
+    padding-top: 80px;
+}
+.course_reasume{
+    margin-top: 20px;
+    padding-left: 150px;
+}
 
+.course figure{
+    margin: 0;
+    padding: 0;
+}
+.carousel-item .course .col-sm{
+    background: #4e7785;
+}
+.course .col-sm{
+border-top-right-radius: 15px;
+border-bottom-right-radius: 15px;
+}
+.course .col-sm-4{
+border-top-left-radius: 15px;
+border-bottom-left-radius: 15px;
+}
+figure img{
+    width: 400px;
+    opacity: .5;
+    transition: all 1s ease-in-out;
+    margin-left: -15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+figure img:hover{
+    width: 400px;
+    opacity: 1;
+}
+
+.controls-top{
+    position: relative;
+}
+.controls-top .left-arrow{
+    position: absolute;
+    margin-left: 120px;
+    top: 180px;
+    padding: 20px 25px ;
+    z-index: 1000;
+    border-radius: 60%;
+    background: #b4d0da;
+    transition: all 1s ease-out;
+}
+.controls-top .right-arrow{
+    position: absolute;
+    right: 150px;
+    top: 180px;
+    padding: 20px 25px ;
+    z-index: 1000;
+    border-radius: 60%;
+    background: #c9e0e7;
+    transition: all 1s ease-out;
+}
+.controls-top .left-arrow:hover , .controls-top .right-arrow:hover{
+    background: #0f5066;
+    color: white;
+}
