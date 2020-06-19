@@ -316,7 +316,7 @@
 
                             @foreach ($questions as $question)
                             <tr>
-                                <td title="{{$question->title}}"><a href="/admin/Questions/show">{{$question->title}}</a></td>
+                                <td title="{{$question->title}}"><a href="/admin/Questions/show">{{\Str::limit($question->title,25)}}</a></td>
                                 <td title="{{$question->answers}}">{{\Str::limit($question->answers,20)}}</td>
                                 <td>{{$question->right_answer}}</td>
                                 <td>{{$question->score}}</td>

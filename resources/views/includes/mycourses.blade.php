@@ -1,4 +1,7 @@
-<!--Carousel Wrapper-->
+<div class="container-fluid color-carousel">
+    <div class="row my-auto">
+        <div class="col-12">
+            <!--Carousel Wrapper-->
 <div id="carousel-with-lb" class="carousel  slide carousel-multi-item" data-interval='2000' data-ride="carousel">
 
     <!--Controls-->
@@ -28,7 +31,7 @@
         <div class="row course ">
             <div class="col-sm-4">
                 <figure class="col-md-4 d-md-inline-block">
-                    <a href="" data-size="1600x1067">
+                    <a href="/courses/{{$course->slug}}" data-size="1600x1067">
                       @if ($course->photo)
                       <img src="/images/{{$course->photo->filename}}" class="">
                       @else
@@ -38,8 +41,8 @@
                 </figure>
             </div>
             <div class="col-sm course_text ">
-            <h2 class="text-white">course in <strong>{{$course->title}}</strong></h2>
-            <h3 class="text-white">for track <strong>{{$course->track->name}}</strong></h3>
+            <h2 class="text-white">course in <a href="/courses/{{$course->slug}}"><strong>{{$course->title}}</strong></a></h2>
+            <h3 class="text-white">for track <a href="/courses/{{$course->track->name}}"><strong>{{$course->track->name}}</strong></a></h3>
             </div>
         </div>
 
@@ -52,3 +55,7 @@
 
   </div>
   <!--/.Carousel Wrapper-->
+
+        </div><!-- col-lg-8 -->
+    </div><!-- row -->
+</div><!-- container -->

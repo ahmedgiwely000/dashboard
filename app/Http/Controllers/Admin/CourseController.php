@@ -25,12 +25,15 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'title' =>  'required|min:3|max:50',
+            'title' =>  'required|min:3|max:500',
+            'description' => 'required|min:5|max:500',
             'status' =>  'required|integer|in:0,1',
             'link' =>  'required|url',
             'track_id' =>  'required|integer',
         ];
         $this->validate($request ,$rules);
+
+        $request['slug'] = strtolower(str_replace(' ' ,'-',$request->title));
 
         if($course = Course::create($request->all())){
             if($file = $request->file('img')){

@@ -89,6 +89,22 @@
                         </span>
                         @endif
                         </div>
+                        
+                        {{-- type --}}
+                        <div class="form-group{{ $errors->has('type') ? 'has-danger' : ' '}}">
+                            <label for="input-type" class="form-control-label">{{__('Question Type')}}</label>
+                            <select name="type" id="input-type" required class="form-control">
+                                <option value="text">text</option>
+                                <option value="checkbox">checkbox</option>
+                            </select>
+
+
+                        @if ($errors->has('type'))
+                        <span class="invaild-feedback" role="alert">
+                        <strong>{{$errors->first('type')}}</strong>
+                        </span>
+                        @endif
+                        </div>
 
                         {{-- Quiz_id --}}
                         <div class="form-group{{ $errors->has('quiz_id') ? 'has-danger' : ' '}}">

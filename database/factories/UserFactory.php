@@ -51,8 +51,11 @@ $factory->define(Photo::class, function (Faker $faker) {
 
 
 $factory->define(Course::class, function (Faker $faker) {
+    $title = $faker ->sentence(3);
     return [
-        'title'=>$faker ->sentence(3),
+        'title'=> $title,
+        'description'=>$faker ->paragraph,
+        'slug'=> strtolower(str_replace(' ' ,'-',$title)),
         'status'=>$faker->randomElement([0 , 1]),
         'link' =>$faker -> url,
         // 'track_id'=>factory(App\Track::class),

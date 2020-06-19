@@ -7,7 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'learn code') }}</title>
-        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
         <link type="text/css" href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link type="text/css" href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
@@ -55,8 +55,10 @@
                 </div>
               </nav>
         </div><!-- Container-fluid -->
-        @yield('content')
 
+        @yield('content')
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        @include('includes.footer')
         <script src="/js/script.js"></script>
     </body>
 </html>

@@ -29,6 +29,7 @@ class QuestionController extends Controller
             'answers' =>'required|min:5|max:1000',
             'right_answer' =>'required|min:3|max:50',
             'score' =>'required|integer',
+            'type' =>'required|in:text,checkbox',
         ];
 
         $this->validate($request, $rules);
@@ -51,6 +52,7 @@ class QuestionController extends Controller
             'right_answer' =>'required|min:3|max:50',
             'quiz_id' =>'required|integer',
             'score' =>'required|integer',
+            'type' =>'required|in:text,checkbox',
         ];
         $this->validate($request, $rules);
 

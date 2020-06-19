@@ -31,6 +31,11 @@
     background-attachment: fixed;
 }
 
+.home_picture a{
+    border-radius: 10rem;
+    margin-right: 50px;
+}
+
 .background-text{
     padding-top: 40px;
     padding-left: 50px;
@@ -58,7 +63,7 @@
 }
 /*************** carousel *************/
 
-.carousel {
+.color-carousel {
     background-color: #031629;
 }
 .text-decoration h2 a{
@@ -95,15 +100,15 @@ border-bottom-left-radius: 15px;
 }
 figure img{
     width: 400px;
-    opacity: .5;
-    transition: all 1s ease-in-out;
     margin-left: -15px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+    transition: all .5s ease-in-out;
+    opacity: 1;
 }
 figure img:hover{
     width: 400px;
-    opacity: 1;
+    opacity: .5;
 }
 
 .controls-top{
@@ -137,9 +142,6 @@ figure img:hover{
 .track-title{
     background: #1c5994;
 }
-.track-course img{
-    width: 100%;
-}
 .track-head{
     font-weight: bold;
     color: rgb(226, 233, 238);
@@ -154,17 +156,192 @@ figure img:hover{
     padding: 3px;
     border-radius:20px 10px 20px 10px ;
     margin-right: 10px;
-    box-shadow: 2px 4px 4px #f0f4f8;
 }
 
-.track-name{
-    color: #031629;
+.course .card{
+    width: 255px;
+    height: 310px;
 }
-
 .course .card img{
-    width: 347px;
-    height: 231px;
+    width: 253px;
+    height: 168.61px;
 }
-.course .card-title a{
+
+.course .course-title a{
+    text-decoration: none;
+    margin-bottom: 20px!important;
+}
+
+.row .course .card{
+    box-shadow: 2px 4px 4px #5e6163;
+    transition: all .5s ease-in-out;
+    opacity: 1;
+}
+.row .course .card:hover img{
+    box-shadow: 2px 4px 4px #5e6163;
+    transition: all .5s ease-in-out;
+    opacity: .5;
+}
+
+/************famous tracks************/
+.track-famous{
+    position: relative;
+    width: 100%;
+    margin-right: 50px;
+    height: 500px;
+    background:linear-gradient(rgb(0,0,0,.5),rgb(0,0,0,.4)), url(../images/cover1.jpeg);
+    background-size: cover;
+    background-position: center;
+    /* border-bottom-left-radius: 2%;
+    border-top-right-radius: 20%; */
+    border-radius: 10em;
+    border: solid 20px #606869;
+    background-attachment: fixed;
+}
+.tracks-name{
+background: #14416e!important;
+color: white!important;
+margin-bottom: 20px;
+}
+.tracks .row{
+    display: inline-block;
+    width: 200;
+}
+.track-famous .tracks{
+    margin-top: 50px;
+}
+.track-famous .tracks ul li{
+    display: inline-block;
+    width: 40%;
+    margin-bottom: 10px;
+    padding: 10px 5px 10px 5px;
+    /* box-shadow: 0 0 1px 1px rgba(20,23,28,0.1); */
+    transition: all 1s  ease-in-out ;
+}
+/* .track-famous .tracks ul li:hover {
+    background: rgb(28, 134, 167);
+} */
+
+.track-famous .tracks ul li a{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 0;
+    font-size: 15px;
+    border-radius: 10rem;
+}
+.track-famous .tracks ul li a:hover{
+    color: rgb(235, 241, 243)!important;
+    background: rgb(17, 96, 133)!important;
+}
+
+
+.track-h2{
+    padding-left: 120px;
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 1px 3px 4px #05192c;
+}
+
+/********footer***********/
+footer{
+    background: #1c5994;
+    color: white;
+}
+footer .col-md-2 ul li a{
+    color: rgb(207, 177, 177);
+    text-decoration: none;
+    transition: .2s ease-in-out;
+}
+footer .col-md-2 ul li a:hover{
+    color: white;
     text-decoration: none;
 }
+footer ul .sign{
+text-transform: capitalize;
+border-radius: 10em;
+padding: 10px 30px 10px 30px;
+}
+.footer-copyright{
+    background: #031629;
+    color:  rgb(207, 177, 177);
+}
+.footer-copyright a{
+    color:  #fff;
+    text-decoration: none!important;
+}
+
+/***recommended-courses******/
+
+.recommend .card img{
+    width: 300px;
+    height: 182.4px;
+}
+.recommend .card{
+    width: 380px;
+    height: 182.4px;
+    box-shadow: 1px 2px 3px 4px rgb(32, 33, 34);
+}
+
+.recommend .card .card-title a{
+    text-decoration: none;
+}
+/**********show-course**********/
+.course-header{
+    border-left: solid 10px #031629;
+    border-top-right-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+    color: white;
+    background: #282a2b;
+}
+
+.course-img{
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+}
+
+.row .status {
+    background: #14416e!important;
+    padding: 10px 20px;
+    border-radius: 5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.videos .video{
+background: rgb(219, 212, 212);
+padding: 3px;
+font-size: 2rem;
+}
+.videos .video:hover{
+background: #14416e;
+}
+.videos .video:hover a{
+color: #fff;
+text-decoration: none;
+}
+
+.modal-body{
+    height: 430px!important;
+}
+
+.Quizzes .Quiz {
+    display: inline-block;
+}
+.Quizzes .Quiz a{
+    color: #ffff;
+    background: #14416e;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.Quizzes .Quiz:hover a{
+    color: #14416e;
+    background: rgb(199, 192, 192);
+}
+
+/********show-questions*******/
+.quiz-container input:focus{
+}
+
