@@ -1,13 +1,14 @@
 @extends('layouts.user')
 
 @section('content')
+
 <div class="container p-5">
     <div class="row">
         <div class="course-header">
             <div class="row">
-                <div class="col-sm-8 mt-2 pl-5">
+                <div class="col-sm-8 mt-3 pl-5">
                 <h2 class="mb-5 ">learn <span class="course-head">{{$course->title}}</span>
-                    <span class="float-right status {{$course->status == 0 ? 'text-success' : 'text-danger'}}">{{$course->status == 0 ? 'Free' : 'Paid'}}</span>
+                    <span class="float-right status {{$course->status == 0 ? 'bg-success' : 'bg-danger'}}">{{$course->status == 0 ? 'Free' : 'Paid'}}</span>
                 </h2>
                 <h2>{{$course->description}}</h2>
                 <h2 class="mt-4 mb-3">Track :
@@ -29,6 +30,7 @@
             </div>
         </div>
     </div>
+
     <div class="row videos pt-3 mt-5">
         <div class="col-sm-12">
             <h2 class="mb-3 font-italic font-weight-bold">course videos :</h2>
@@ -44,9 +46,17 @@
         </div>
     </div>
 
+    @if (session('status'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('status') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="row Quizzes pt-3 mt-5">
         <div class="col-sm-12">
-            <h2 class="mb-3 font-italic font-weight-bold">Curse Quizzes :</h2>
+            <h2 class="mb-3 font-italic font-weight-bold">Course Quizzes :</h2>
             @if (count($course->quizzes) > 0)
             @foreach ($course->quizzes as $quiz)
                 <div class="Quiz mb-4 ml-3">

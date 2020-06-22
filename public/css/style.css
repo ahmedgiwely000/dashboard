@@ -21,6 +21,12 @@
     margin-right: 10px;
     text-shadow:  1px 4px 4px #1c5994;
 }
+.navbar-nav .nav-link{
+    color: white!important;
+}
+.navbar-nav .nav-link:hover{
+    color: rgb(39, 50, 58)!important;
+}
 /* home picture */
 .home_picture{
     height: 350px;
@@ -302,7 +308,8 @@ padding: 10px 30px 10px 30px;
 }
 
 .row .status {
-    background: #14416e!important;
+    /* background: #14416e!important; */
+    color: white;
     padding: 10px 20px;
     border-radius: 5rem;
     font-size: 1rem;
@@ -342,6 +349,41 @@ text-decoration: none;
 }
 
 /********show-questions*******/
-.quiz-container input:focus{
+
+.question .quiz-container{
+    width: 50%;
+}
+.question .quiz-container .offset-3{
+    margin-left: 350px;
+}
+
+/****************search****************/
+.search{
+    margin-top: 50px;
+}
+.search h3{
+    margin-bottom: 60px;
+}
+.search .course{
+    margin-bottom: 50px;
+}
+.search .course .course-img img{
+    width: 100%;
+    height: 200px;
+    margin-right: 0;
+    padding-right: 0;
+}
+.search .course p{
+    font-size: 1rem;
+}
+.search .course .col-sm-8{
+    border: solid grey 3px;
+    border-left: none;
+    padding-top: 20px;
+    padding-right: 10px!important;
+    margin-left: 0!important;
+}
+.search .course .col-sm-4{
+    padding: 0;
 }
 

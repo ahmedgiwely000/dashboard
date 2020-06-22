@@ -71,7 +71,7 @@ class CourseController extends Controller
     public function update(Request $request,Course $course)
     {
         $rules = [
-            'title' =>  'required|min:3|max:50',
+            'title' =>  'required|min:3|max:500',
             'status' =>  'required|integer|in:0,1',
             'link' =>  'required|url',
             'track_id' =>  'required|integer',

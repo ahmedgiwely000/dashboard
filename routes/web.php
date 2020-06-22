@@ -23,6 +23,9 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/courses/{slug}', 'CourseController@index');
 Route::get('/courses/{slug}/quizzes/{name}', 'QuizController@index');
+Route::post('/courses/{slug}/quizzes/{name}', 'QuizController@submit');
+
+Route::get('/search','SearchController@index');
 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');

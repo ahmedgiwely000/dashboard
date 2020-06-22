@@ -22,8 +22,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                    <form class="form-inline my-2 my-lg-0 form-nav mx-auto">
-                        <input class="form-control mx-auto input-search " type="search" placeholder="Find You Course" aria-label="Search">
+                    <form method="GET" action="/search" class="form-inline my-2 my-lg-0 form-nav mx-auto">
+                        <input class="form-control mx-auto input-search " type="search" name="q" placeholder="Find You Course" aria-label="Search">
                     </form>
 
                   <ul class="navbar-nav ml-auto mr-5">
