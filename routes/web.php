@@ -16,16 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/home', 'HomeController@index')->name('home');
-
 Auth::routes();
-
 Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('/courses/{slug}', 'CourseController@index');
 Route::get('/courses/{slug}/quizzes/{name}', 'QuizController@index');
 Route::post('/courses/{slug}/quizzes/{name}', 'QuizController@submit');
 
 Route::get('/search','SearchController@index');
+
+Route::get('/tracks/{name}','TrackController@index');
+
 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');

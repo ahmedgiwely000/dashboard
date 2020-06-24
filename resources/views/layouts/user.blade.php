@@ -12,6 +12,15 @@
         <link type="text/css" href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body class="{{ $class ?? '' }}">
+
+
+        @auth()
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        @endauth
+
+
         {{-- NavBar --}}
         <div class="container-fluid color_navbar">
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -26,7 +35,7 @@
                         <input class="form-control mx-auto input-search " type="search" name="q" placeholder="Find You Course" aria-label="Search">
                     </form>
 
-                  <ul class="navbar-nav ml-auto mr-5">
+                  <ul class="navbar-nav ml-auto d-flex mr-5">
                     <li class="nav-item">
                       <a class="nav-link font-weight-bold" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
@@ -39,7 +48,7 @@
                               {{\Str::limit(auth()->user()->name)}}
                           @endauth
                           @guest
-                              login
+                          <li class="nav-item font-weight-bold"><a class="nav-link font-weight-bold" href="{{route('login')}}">login</a></li>
                           @endguest
                         </a>
                         @auth
@@ -47,7 +56,11 @@
                             <a class="dropdown-item" href="admin/profile">Profile</a>
                             <a class="dropdown-item" href="">My Course</a>
                             <div class="dropdown-divider"></div>
-                            <a href="{{ route('logout') }}" class="dropdown-item">Logout</a>
+                            <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                                <i class="ni ni-user-run"></i>
+                                <span>{{ __('Logout') }}</span>
+                            </a>
                           </div>
                         @endauth
                       </li>

@@ -6,7 +6,7 @@
     <h2 class="track-name">last courses in <span class="course-head">{{$track->name}}</span></h2>
 
     <div class="row ">
-        @foreach ($track->courses()->limit(4)->get() as $course)
+        @foreach ($track->courses()->orderBy('id','desc')->limit(4)->get() as $course)
         <div class="col-lg-3 col-md-6 col-sm-12 mb-4 mx-auto">
             <div class="course my-auto">
                 <div class="card mx-auto">
@@ -52,6 +52,7 @@
             @endif
 
             @if($i == 1)
+            @auth
             <div class="container">
                 <div class="row ml-5">
                     <h2 class="text-capitalize track-h2 offset-lg-2 offset-sm-1 mt-5">recommended courses for you</h2>
@@ -84,6 +85,7 @@
             </div>
                 </div>
             </div>
+            @endauth
 
             @endif
 

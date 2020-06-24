@@ -5,12 +5,15 @@
 <div id="carousel-with-lb" class="carousel  slide carousel-multi-item" data-interval='2000' data-ride="carousel">
 
     <!--Controls-->
-    <div class="controls-top">
+
+    <div class="controls-top" >
       <a class="btn-floating left-arrow" href="#carousel-with-lb" data-slide="prev"><i
           class="fas fa-chevron-left"></i></a>
       <a class="btn-floating  right-arrow" href="#carousel-with-lb" data-slide="next"><i
           class="fas fa-chevron-right"></i></a>
     </div>
+
+
     <!--/.Controls-->
     <!--Slides and lightbox-->
 
