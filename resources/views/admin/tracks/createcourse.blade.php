@@ -40,6 +40,20 @@
                         @endif
                         </div>
 
+                        {{-- Description --}}
+                        <div class="form-group{{ $errors->has('description') ? 'has-danger' : ' '}}">
+                            <label for="input-description" class="form-control-label">{{__('Description')}}</label>
+                            <input type="text" name="description" id="input-description" class="form-control
+                        form-control-alternative{{ $errors->has('description') ? 'is-invaild' : ' '}}" placeholder="{{__('description')}}" value="{{old('title')}}"
+                        required autofocus>
+
+                        @if ($errors->has('description'))
+                        <span class="invaild-feedback" role="alert">
+                        <strong>{{$errors->first('description')}}</strong>
+                        </span>
+                        @endif
+                        </div>
+
                         {{-- Track_id --}}
                         <div class="form-group{{ $errors->has('track_id') ? 'has-danger' : ' '}}">
                             <label for="input-track_id" class="form-control-label">{{__('Track')}}</label>

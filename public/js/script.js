@@ -4,5 +4,49 @@ $(function(){
         $('.modal .modal-content .modal-body iframe').attr('src',link)
         console.log(link);
     });
+
+    $('.Quizz a').click(function(e){
+        e.preventDefault();
+    });
+
+
+    /**upload photo  */
+    $('#upload_btn').on('click',function(e){
+        e.preventDefault();
+        if($('#upload_btn').attr("class") !== 'btn btn-success btn-block mt-1'){
+           $('#img_file').trigger('click');
+        }else{
+            $('#form').submit();
+        }
+    });
+
+    $('#img_file').on('change',function(){
+        let image_value = $(this).val();
+        $('#upload_btn').html("<i class='fas fa-cloud-upload-alt'></i> Save");
+        $('#upload_btn').attr("class" ,'btn btn-success btn-block mt-1');
+    });
+
+    //**form submit ajax */
+
+    $('#form').on('submit',function(e){
+        e.preventDefault();
+
+        $.ajax({
+            url: '/profile',
+            type: 'POST',
+            data: new FormData(this),
+            dataType: 'JSON',
+            contentType : false,
+            cache : false,
+            processData : false,
+            success: function(data) {
+                console.log(data);
+                $("#message").text(data.message);
+                $("#uploaded_image").html(data.uploaded_image);
+            },
+        });
+    });
+
+
 });
 

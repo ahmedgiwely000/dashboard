@@ -46,7 +46,7 @@ class QuizController extends Controller
          }
         }
 
-        $user = auth()->user();
+        $user = auth()->user(); 
 
         $user->Quizzes()->attach([$quiz->id]);
         $user->score += $quiz_score;

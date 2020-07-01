@@ -53,6 +53,7 @@
                         </span>
                         @endif
                         </div> --}}
+                        
                         {{-- Description --}}
                         <div class="form-group{{ $errors->has('description') ? 'has-danger' : ' '}}">
                             <label for="input-description" class="form-control-label">{{__('Description')}}</label>

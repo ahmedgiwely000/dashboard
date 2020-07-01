@@ -53,8 +53,8 @@
                         </a>
                         @auth
                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="admin/profile">Profile</a>
-                            <a class="dropdown-item" href="">My Course</a>
+                            <a class="dropdown-item" href="/profile">Profile</a>
+                            <a class="dropdown-item" href="/mycourses">My Course</a>
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">

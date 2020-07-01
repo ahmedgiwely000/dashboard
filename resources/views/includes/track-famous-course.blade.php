@@ -3,7 +3,7 @@
 
     <?php $i= 0; ?>
     @foreach ($tracks as $track)
-    <h2 class="track-name">last courses in <span class="course-head">{{$track->name}}</span></h2>
+<h2 class="track-name">last courses in <span class="course-head"><a href="/tracks/{{$track->name}}">{{$track->name}}</a></span></h2>
 
     <div class="row ">
         @foreach ($track->courses()->orderBy('id','desc')->limit(4)->get() as $course)
@@ -63,14 +63,14 @@
                             <div class="row no-gutters mx-auto">
                               <div class="col-10 col-md-6 col-sm-8">
                                 @if ($course_r->photo)
-                                <a href=""><img src="/images/{{$course_r->photo->filename}}" class="img-fluid" ></a>
+                                <a href="/courses/{{$course_r->slug}}"><img src="/images/{{$course_r->photo->filename}}" class="img-fluid" ></a>
                                 @else
-                                <a href=""><img src="/images/1.jpg" class="track-img img-fluid"></a>
+                                <a href="/courses/{{$course_r->slug}}"><img src="/images/1.jpg" class="track-img img-fluid"></a>
                                 @endif
                               </div>
                               <div class="col-10 col-md-6 col-sm-8">
                                 <div class="card-body">
-                                  <h5 class="card-title"><a href=""><h5 class="pl-3">welcome to {{\Str::limit($course_r->title,20)}}</h5></a>
+                                  <h5 class="card-title"><a href="/courses/{{$course_r->slug}}"><h5 class="pl-3">welcome to {{\Str::limit($course_r->title,20)}}</h5></a>
                                 </h5>
                                 <div class="d-flex justify-content-between mt-5">
                                     <h5 class="pl-3 {{$course_r->status == 0 ? 'text-success' : 'text-danger'}}">{{$course_r->status == 0 ? 'Free' : 'Paid'}}</h5>
