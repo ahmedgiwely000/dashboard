@@ -10,8 +10,10 @@
             </button>
         </div>
     @endif
-    <div class="row quiz-container">
+
         <h2 class=" pl-5  mb-5 font-italic font-weight-bold">{{$course->title}} : <span class="text-success font-weight-bold">{{$quiz->name}}</span> </h2>
+        @if ($course->quize)
+        <div class="row quiz-container">
         <div class="col-8 offset-3">
         <form action="/courses/{{$course->slug}}/quizzes/{{$quiz->name}}" method="POST" autocomplete="off">
             @csrf
@@ -35,5 +37,8 @@
             </form>
         </div>
     </div>
+        @else
+        <h2 class="text-center text-capitalize alert text-danger">no quizzess in this course</h2>
+        @endif
 </div>
 @endsection

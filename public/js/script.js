@@ -26,7 +26,7 @@ $(function(){
         $('#upload_btn').attr("class" ,'btn btn-success btn-block mt-1');
     });
 
-    //**form submit ajax */
+    //**form submit ajax img*/
 
     $('#form').on('submit',function(e){
         e.preventDefault();
@@ -46,6 +46,58 @@ $(function(){
             },
         });
     });
+    //**form submit ajax info*/
+
+    $('#form_info').on('submit',function(e){
+        e.preventDefault();
+
+        $.ajax({
+            url: '/profile',
+            type: 'POST',
+            data: new FormData(this),
+            dataType: 'JSON',
+            contentType : false,
+            cache : false,
+            processData : false,
+            success: function(data) {
+                // console.log(data);
+                $("#message").css('display','block');
+                $("#message").text(data.message);
+                $("#error_info").css('display','none');
+
+            },
+            error: function (){
+                $("#error_info").css('display','block');
+                $("#message").css('display','none');
+
+            }
+        });
+    });
+
+    $('#send_email_button').on('click', function(e){
+        e.preventDefault();
+
+        $.ajax({
+            url: '/contact',
+            type: 'POST',
+            data: new FormData(this),
+            dataType: 'JSON',
+            contentType : false,
+            cache : false,
+            processData : false,
+            success: function(data) {
+                // console.log(data);
+
+                $("#name").val('');
+                $("#email").val('');
+                $("#subject").val('');
+                $("#message_in").val('');
+
+                $("#message").css('display','block');
+                $("#message").text(data.message);
+            }
+        });
+    })
 
 
 });

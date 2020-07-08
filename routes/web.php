@@ -33,9 +33,23 @@ Route::get('/tracks/{name}','TrackController@index');
 Route::get('/mycourses','MyCoursesController@index');
 
 Route::get('/profile','MyProfileController@index');
-Route::post('/profile','MyProfileController@update_image');
+Route::post('/profile','MyProfileController@update');
 
+Route::get('/allcourses','AllCoursesController@index');
 
+Route::get('/contact','ContactController@index');
+Route::post('/contact','ContactController@sendEmail');
+
+//********logout*******//
+
+Route::get('/logout', function(){
+    if(\Auth::check()){
+        \Auth::logout();
+        return redirect('/home');
+    }else{
+        return redirect('/');
+    }
+})->name('logout');
 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');

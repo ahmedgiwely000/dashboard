@@ -3,7 +3,7 @@
 
     <?php $i= 0; ?>
     @foreach ($tracks as $track)
-<h2 class="track-name">last courses in <span class="course-head"><a href="/tracks/{{$track->name}}">{{$track->name}}</a></span></h2>
+<h2 class="track-name mb-3">last courses in <span class="course-head"><a href="/tracks/{{$track->name}}">{{$track->name}}</a></span></h2>
 
     <div class="row ">
         @foreach ($track->courses()->orderBy('id','desc')->limit(4)->get() as $course)
@@ -41,7 +41,7 @@
                         <ul class="list-unstyled">
                             @foreach ($famous_tracks as $track)
                             <li>
-                                <a href="" class="btn tracks-name d-inline-block font-weight-bold">{{$track->name}}</a>
+                            <a href="/tracks/{{$track->name}}" class="btn tracks-name d-inline-block font-weight-bold">{{$track->name}}</a>
                             </li>
                             @endforeach
                         </ul>

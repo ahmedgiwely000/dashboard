@@ -8,7 +8,7 @@
             <div class="user-info">
 
                 <div class="user-img">
-                    <div id="message"></div>
+                    <div id="message" class="message alert alert-text text-center p-3 font-weight-bold text-success"></div>
                     <div id="uploaded_image">
                         @if ($user->photo)
                           <img src="/images/{{$user->photo->filename}}" class="img-fluid img-thumbnail">
@@ -37,12 +37,21 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-7">
             <div class="user-data">
+                @if (session('status'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('status') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true" >&times;</span>
+                        </button>
+                    </div>
+                @endif
+                <div id="error_info" class="text-center bg-danger">Please Enter Name , email And Password Correctly</div>
                 <div class="card text-white">
                     <div class="card-title text-center text-white pt-1">
                         <h2>user information</h2>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/profile">
+                        <form id="form_info" method="POST" action="/profile">
                             @csrf
                             <div class="form-group">
                                 <div class="form-group">
@@ -51,24 +60,40 @@
                                 </div><!-- input-name -->
                                 <div class="form-group">
                                     <label for="useremail">User Email :</label>
-                                    <input type="email" name="mail" id="useremail" placeholder="your mail" value="{{$user->email}}" class="form-control">
+                                    <input type="email" name="email" id="useremail" placeholder="your mail" value="{{$user->email}}" class="form-control">
                                 </div><!-- input-email -->
                                 <div class="form-group">
                                     <label for="userpassword">User Password :</label>
-                                    <input type="password" name="password" id="userpassword" placeholder="your password" value="{{$user->password}}" class="form-control">
+                                    <input type="password" name="password" id="userpassword" placeholder="your password"  class="form-control">
                                 </div><!-- input-password -->
                                 <div class="form-group">
                                     <label for="confirmpassword">Confirm Password :</label>
-                                    <input type="password" name="password" id="confirmpassword" placeholder="confirm password" value="{{$user->password}}" class="form-control">
+                                    <input type="password" name="confirmpassword" id="confirmpassword" placeholder="confirm password"  class="form-control">
                                 </div><!-- input-confirm password -->
-                                <input type="submit" value="SAVE" class="btn btn-block btn-user">
-
                             </div>
+                            <input type="submit" value="SAVE" class="btn btn-block btn-user">
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        @if (count($user->tracks) > 0 )
+        <div class="users-tracks mt-2">
+            <h2 class="font-weight-bold"><i class="fab fa-leanpub"></i> You are learning these tracks ..</h2>
+            <hr>
+            <div class="user-tracks-list">
+                <ul class="list-unstyled d-flex">
+                    @foreach ($tracks as $track)
+                       <li class="mr-2"><a href="/tracks/{{$track->name}}" class="btn btn-success">{{$track->name}}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        @else
+
+        @endif
+
+
     </div>
 </div>
 @endsection
